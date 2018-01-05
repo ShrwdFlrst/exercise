@@ -15,7 +15,7 @@ Your solution must work with the following platforms (depending on your language
 
 It will be tested on Ubuntu `14.04`, but that should make no difference to your solution (any Linux distro will do).
 
-Besides the platform restriction above, you are welcome to use any libraries (or none at all) to come up with your solution.
+You are expected to integrate with the REST API directly, instead of using pre-written integrations (like an SDK), but otherwise you're welcome to use any libraries you like.
 
 
 ### Functional Requirements
@@ -23,7 +23,7 @@ Besides the platform restriction above, you are welcome to use any libraries (or
 The command line application **must**:
 
   1. Take a single argument specifying the search term, and error out if one is not provided
-  2. Using the [Github API](https://developer.github.com/v3/) as a starting point, find all the repositories that have a description containing the given search term **as a full phrase** (not just the words individually). To avoid hitting the API rate limit, you should only load **up to 1000** results.
+  2. Using the [Github API](https://developer.github.com/v3/) as a starting point, find all the repositories that have a **description** containing the given search term **as a full phrase** (not just the words individually). To avoid hitting the API rate limit, you should only load **up to 1000** results.
   3. Filter out any repos with an empty "language" (`null` or empty String)
   4. Group the remaining list of repos by "language", and count the number of occurrences for each
   5. Sort the languages by occurrence descending
