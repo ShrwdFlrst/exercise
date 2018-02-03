@@ -20,6 +20,7 @@ $results = [];
 $perPage = 100;
 // We want this many
 $maxResults = 1000;
+$total = 0;
 
 for ($p = 1; $p <= ceil($maxResults / $perPage); $p++) {
     $urlWithPagination = sprintf("%s&per_page=%s&page=%s", $url, $perPage, $p);
@@ -30,6 +31,7 @@ for ($p = 1; $p <= ceil($maxResults / $perPage); $p++) {
     }
 
     if ($p * $perPage >= $result['total_count']) {
+        $total = $result['total_count'];
         break;
     }
 }
@@ -54,7 +56,11 @@ foreach ($languages as $language => $count) {
 }
 
 // #7 After the results, on a separate line, output the total number of search results in the format: => {total_count} total result(s) found
-echo sprintf("%s%s total result(s) found%s", PHP_EOL, array_sum($languages), PHP_EOL);
+//echo sprintf("%s=> %s total result(s) found%s", PHP_EOL, array_sum($languages), PHP_EOL);
+
+// This is the total including the filtered out blank results which matches the example from the instructions
+// The commented out line above is the total sum of the languages displayed only, excluding blanks.
+echo sprintf("%s=> %s total result(s) found%s", PHP_EOL, $total, PHP_EOL);
 
 
 
